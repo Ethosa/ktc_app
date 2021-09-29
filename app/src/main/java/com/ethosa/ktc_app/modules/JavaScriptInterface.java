@@ -2,10 +2,12 @@ package com.ethosa.ktc_app.modules;
 
 import android.webkit.JavascriptInterface;
 
-public class JS {
-    private final Interface apiInterface;
+import com.ethosa.ktc_app.callbacks.HTMLUpdateCallback;
 
-    public JS(Interface apiInterface) {
+public class JavaScriptInterface {
+    private final HTMLUpdateCallback apiInterface;
+
+    public JavaScriptInterface(HTMLUpdateCallback apiInterface) {
         this.apiInterface = apiInterface;
     }
 

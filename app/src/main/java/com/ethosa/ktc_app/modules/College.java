@@ -6,6 +6,8 @@ import android.content.Context;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.ethosa.ktc_app.callbacks.HTMLUpdateCallback;
+
 public class College {
 
     private static final String URL = "https://pro.kansk-tc.ru/";
@@ -17,7 +19,7 @@ public class College {
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setUserAgentString("Mozilla");
-        webView.addJavascriptInterface(new JS(new Interface()), "Android");
+        webView.addJavascriptInterface(new JavaScriptInterface(new HTMLUpdateCallback()), "Android");
     }
 
     public void updateHTML() {
