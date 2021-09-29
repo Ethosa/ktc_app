@@ -1,4 +1,4 @@
-package com.ethosa.ktk_app.modules;
+package com.ethosa.ktc_app.modules;
 
 
 import android.annotation.SuppressLint;
@@ -17,7 +17,7 @@ public class College {
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setUserAgentString("Mozilla");
-        webView.addJavascriptInterface( new JS(new APIInterface()), "Android");
+        webView.addJavascriptInterface( new JS(new Interface()), "Android");
     }
 
     public void updateHTML() {

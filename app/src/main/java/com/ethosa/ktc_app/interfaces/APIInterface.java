@@ -1,4 +1,4 @@
-package com.ethosa.ktk_app.interfaces;
+package com.ethosa.ktc_app.interfaces;
 
 import android.util.Log;
 

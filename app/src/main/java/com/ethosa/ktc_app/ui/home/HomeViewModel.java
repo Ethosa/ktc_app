@@ -1,4 +1,4 @@
-package com.ethosa.ktk_app.ui.home;
+package com.ethosa.ktc_app.ui.home;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;

@@ -1,4 +1,4 @@
-package com.ethosa.ktk_app.modules;
+package com.ethosa.ktc_app.modules;
 
 import android.webkit.JavascriptInterface;
 
@@ -10,7 +10,6 @@ public class JS {
     }
 
     @JavascriptInterface
-    @SuppressWarnings("unused")
     public void processHTML(String html)
     {
         apiInterface.onHTMLUpdate(html);

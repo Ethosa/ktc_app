@@ -1,10 +1,10 @@
-package com.ethosa.ktk_app;
+package com.ethosa.ktc_app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ethosa.ktk_app.databinding.ActivityMainBinding;
-import com.ethosa.ktk_app.modules.College;
+import com.ethosa.ktc_app.modules.College;
+import com.ethosa.ktc_app.databinding.ActivityMainBinding;
 
 import java.util.Objects;
 
