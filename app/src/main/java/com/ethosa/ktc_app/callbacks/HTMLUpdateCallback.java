@@ -1,7 +1,7 @@
 package com.ethosa.ktc_app.callbacks;
 
 import android.util.Log;
-import com.ethosa.ktc_app.interfaces.APIInterface;
+import com.ethosa.ktc_app.APIInterface;
 
 public class HTMLUpdateCallback implements APIInterface {
     @Override
