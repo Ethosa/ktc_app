@@ -1,19 +1,17 @@
 package com.ethosa.ktk_app;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import com.ethosa.ktk_app.databinding.ActivityMainBinding;
+import com.ethosa.ktk_app.modules.College;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private College college;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        college = new College(this);
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        initUI();
+    }
+
+    private void initUI() {
+        binding.login.setOnClickListener(view -> college.auth(
+                Objects.requireNonNull(binding.username.getEditText()).toString(),
+                Objects.requireNonNull(binding.password.getEditText()).toString()));
     }
 
 }
