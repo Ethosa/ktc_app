@@ -19,7 +19,7 @@ public class College {
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setUserAgentString("Mozilla");
-        webView.addJavascriptInterface(new JavaScriptInterface(new HTMLUpdateCallback()), "Android");
+        webView.addJavascriptInterface(new JavaScriptInterface(new HTMLUpdateCallback(this)), "Android");
     }
 
     public void updateHTML() {

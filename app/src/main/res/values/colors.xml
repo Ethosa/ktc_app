@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="teal_200">#80CBC4</color>
-    <color name="teal_500">#FF009688</color>
-    <color name="teal_700">#FF00796B</color>
-    <color name="pink_200">#FFF48FB1</color>
-    <color name="pink_700">#FFC2185B</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFEFEFE</color>
     <color name="hint_color">#FFE0E0E0</color>
+    <color name="text_color">#2C2C29</color>
 
-    <color name="primary">#332946</color>
-    <color name="primary_dark">#1f152a</color>
-    <color name="dark">#170e1f</color>
-    <color name="accent">#a06be3</color>
+    <color name="background_color">#f3efdf</color>
+    <color name="foreground_color">#D5D1C4</color>
+
+    <color name="primary">#324778</color>
+    <color name="primary_dark">#21314b</color>
+    <color name="accent">#675140</color>
+    <color name="accent_dark">#513933</color>
     <color name="action">#ffe3b9</color>
 </resources>
