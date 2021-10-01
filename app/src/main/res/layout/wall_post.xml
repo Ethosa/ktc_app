@@ -3,23 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="196dp"
-    android:background="@color/foreground_color">
+    android:layout_height="wrap_content"
+    android:background="@color/foreground_color"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="96dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitCenter"
+        android:layout_width="415dp"
+        android:layout_height="222dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_image_24" />
+        app:layout_constraintTop_toBottomOf="@+id/news_body"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/new_title"
+        android:id="@+id/news_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/news_title"
@@ -28,20 +30,34 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.019" />
 
     <TextView
-        android:id="@+id/new_body"
-        android:layout_width="369dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="96dp"
+        android:id="@+id/news_body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:text="@string/new_body"
         android:textColor="@color/text_color"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/news_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/news_date"
+        android:textColor="@color/disabled_text_color"
+        app:layout_constraintStart_toEndOf="@+id/news_title"
+        app:layout_constraintTop_toTopOf="@+id/news_title" />
 </android.support.constraint.ConstraintLayout>

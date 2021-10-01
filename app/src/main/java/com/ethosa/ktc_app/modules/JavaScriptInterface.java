@@ -14,6 +14,6 @@ public class JavaScriptInterface {
     @JavascriptInterface
     public void processHTML(String html)
     {
-        apiInterface.onHTMLUpdate(html);
+        apiInterface.onResult(html);
     }
 }

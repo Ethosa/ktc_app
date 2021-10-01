@@ -9,6 +9,7 @@
     <string name="ktc_title">Вход в ProCollege</string>
     <string name="news_title">News Title</string>
     <string name="new_body">New body</string>
+    <string name="news_date">news date</string>
 
     <string-array name="cat_names">
         <item>Рыжик</item>

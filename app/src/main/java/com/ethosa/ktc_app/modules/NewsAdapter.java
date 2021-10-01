@@ -1,52 +1,76 @@
 package com.ethosa.ktc_app.modules;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.ethosa.ktc_app.R;
+import com.ethosa.ktc_app.databinding.WallPostBinding;
 import com.ethosa.ktc_app.objects.NewItem;
 
-import java.util.Collections;
 import java.util.List;
 
-public class NewsAdapter extends ArrayAdapter<List<NewItem>> {
-    private int resourceLayout;
-    private Context mContext;
-    private List<NewItem> items;
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+    public List<NewItem> data;
+    private final int layout;
+    private ItemClickListener listener;
 
-    public NewsAdapter(Context context, int resource, List<NewItem> items) {
-        super(context, resource, Collections.singletonList(items));
-        this.resourceLayout = resource;
-        this.mContext = context;
-        this.items = items;
+    private final LayoutInflater inflater;
+
+    public NewsAdapter(Context context, int layout, List<NewItem> data) {
+        this.data = data;
+        this.layout = layout;;
+
+        inflater = LayoutInflater.from(context);
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = inflater.inflate(layout, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
-        NewItem data = items.get(position);
-        System.out.println(position);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        NewItem item = data.get(position);
+        holder.binding.newsTitle.setText(item.title);
+        holder.binding.newsBody.setText(item.body);
+        holder.binding.newsDate.setText(item.date);
+    }
 
-        if (v == null) {
-            LayoutInflater vi;
-            vi = LayoutInflater.from(mContext);
-            v = vi.inflate(resourceLayout, null);
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        WallPostBinding binding;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            this.binding = WallPostBinding.inflate(inflater);
+            itemView.setOnClickListener(this);
         }
 
-        if (data != null) {
-            final TextView title = v.findViewById(R.id.new_title);
-            final TextView body = v.findViewById(R.id.new_body);
-            final ImageView image = v.findViewById(R.id.image);
+        @Override
+        public void onClick(View view) {
 
-            title.setText(data.title);
-            body.setText(data.body);
         }
+    }
 
-        return v;
+    public NewItem getItem(int id) {
+        return data.get(id);
+    }
+
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.listener = itemClickListener;
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
     }
 }

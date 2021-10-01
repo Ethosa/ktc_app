@@ -2,6 +2,7 @@
 <resources>
     <color name="hint_color">#FFE0E0E0</color>
     <color name="text_color">#f3efdf</color>
+    <color name="disabled_text_color">#BFBCAE</color>
 
     <color name="background_color">#42413C</color>
     <color name="foreground_color">#53524D</color>
