@@ -12,27 +12,23 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.ethosa.ktc_app.databinding.FragmentHomeBinding;
+import com.ethosa.ktc_app.databinding.FragmentTimetableBinding;
 
 public class TimetableFragment extends Fragment {
 
     private TimetableViewModel homeViewModel;
-    private FragmentHomeBinding binding;
+    private FragmentTimetableBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(TimetableViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentTimetableBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        final TextView textView = binding.textTimetable;
+        homeViewModel.getText().observe(getViewLifecycleOwner(), s -> textView.setText(s));
         return root;
     }
 
