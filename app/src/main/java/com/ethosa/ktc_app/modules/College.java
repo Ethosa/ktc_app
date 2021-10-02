@@ -3,27 +3,21 @@ package com.ethosa.ktc_app.modules;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.ethosa.ktc_app.callbacks.HTMLUpdateCallback;
 import com.ethosa.ktc_app.callbacks.NewsCallback;
-import com.ethosa.ktc_app.objects.NewItem;
 import com.ethosa.ktc_app.objects.NewItems;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -68,7 +62,6 @@ public class College {
     }
 
     public void getNews(NewsCallback callback) {
-        // TODO: fix
         Request request = new Request.Builder()
                 .url(API_URL + "news/")
                 .get()
@@ -78,16 +71,14 @@ public class College {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("API", Arrays.toString(e.getStackTrace()));
-                call.cancel();
             }
 
             @Override
-            public void onResponse(Call call, Response response) {
-                final String r = response.body().toString();
+            public void onResponse(Call call, Response response) throws IOException {
+                final String r = response.body().string();
                 System.out.println(r);
                 NewItems data = gson.fromJson(r, NewItems.class);
                 callback.onResult(data.anonce);
-                call.cancel();
             }
         });
     }

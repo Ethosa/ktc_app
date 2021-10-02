@@ -38,8 +38,7 @@ public class HomeFragment extends Fragment {
         binding.news.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         binding.news.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.news.setAdapter(adapter);
-        System.out.println(1);
-//        college.getNews(new NewsCallback(getContext(), adapter));
+        college.getNews(new NewsCallback(this, binding.news));
 
         homeViewModel.getText().observe(getViewLifecycleOwner(), s -> {
         });

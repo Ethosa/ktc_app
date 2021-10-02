@@ -52,7 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            this.binding = WallPostBinding.inflate(inflater);
+            this.binding = WallPostBinding.inflate(inflater, (ViewGroup) itemView, true);
             itemView.setOnClickListener(this);
         }
 

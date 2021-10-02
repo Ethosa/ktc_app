@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ethosa.ktc_app">
+    <uses-permission
+        android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -9,7 +11,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyCollege">
+        android:theme="@style/Theme.MyCollege"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_config">
         <activity
             android:name="com.ethosa.ktc_app.MainActivity"
             android:exported="true"
@@ -20,9 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="true" />
     </application>
-    <uses-permission
-        android:name="android.permission.INTERNET"
-        tools:ignore="ManifestOrder" />
 
 </manifest>

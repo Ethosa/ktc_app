@@ -3,16 +3,19 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.ethosa.ktc_app"
-        minSdk 23
-        targetSdk 31
+        minSdkVersion 21
+        targetSdkVersion 31
         versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionName "0.1"
     }
 
     buildTypes {
