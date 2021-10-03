@@ -1,6 +1,6 @@
 package com.ethosa.ktc_app.callbacks;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ethosa.ktc_app.APIInterface;
 import com.ethosa.ktc_app.R;

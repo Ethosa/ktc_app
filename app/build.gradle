@@ -32,20 +32,16 @@ android {
 
 dependencies {
     // UI
-    //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
-    implementation 'android.arch.navigation:navigation-ui:1.0.0'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.navigation:navigation-fragment:2.4.0-alpha09'
+    implementation 'androidx.navigation:navigation-ui:2.4.0-alpha09'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // Tools
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Requests
-    //noinspection GradleCompatible
     implementation 'org.jsoup:jsoup:1.14.2'
-    //noinspection GradleDependency
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 }
