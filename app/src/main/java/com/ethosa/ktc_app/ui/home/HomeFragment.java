@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProvider;
 
 import com.ethosa.ktc_app.R;
 import com.ethosa.ktc_app.callbacks.NewsCallback;
@@ -28,10 +27,15 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         college = new College(getContext());
+        initUI();
+
+        return root;
+    }
+
+    private void initUI() {
         List<NewItem> items = new ArrayList<>();
         adapter = new NewsAdapter(getContext(), R.layout.wall_post, items);
 
@@ -39,10 +43,6 @@ public class HomeFragment extends Fragment {
         binding.news.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.news.setAdapter(adapter);
         college.getNews(new NewsCallback(this, binding.news));
-
-        homeViewModel.getText().observe(getViewLifecycleOwner(), s -> {
-        });
-        return root;
     }
 
     @Override

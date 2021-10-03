@@ -3,7 +3,6 @@ package com.ethosa.ktc_app.modules;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -14,7 +13,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -70,13 +68,12 @@ public class College {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("API", Arrays.toString(e.getStackTrace()));
+                e.printStackTrace();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String r = response.body().string();
-                System.out.println(r);
                 NewItems data = gson.fromJson(r, NewItems.class);
                 callback.onResult(data.anonce);
             }
