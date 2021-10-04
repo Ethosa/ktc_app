@@ -6,6 +6,10 @@ import com.ethosa.ktc_app.objects.Course;
 import com.ethosa.ktc_app.objects.Courses;
 import com.ethosa.ktc_app.ui.timetable.TimetableFragment;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+
+import java.util.List;
+
 
 public class CoursesCallback implements APIInterface<Courses> {
     private FragmentTimetableBinding binding;
@@ -16,32 +20,22 @@ public class CoursesCallback implements APIInterface<Courses> {
         this.timetableFragment = timetableFragment;
     }
 
-    private Chip createButton(String text) {
-        Chip btn = new Chip(timetableFragment.getContext());
-        btn.setPadding(0, 0, 0, 0);
-        btn.setText(text);
-        return  btn;
+    private void fillCourse(List<Course> data, ChipGroup group) {
+        for (Course course : data) {
+            Chip btn = new Chip(timetableFragment.getContext());
+            btn.setPadding(0, 0, 0, 0);
+            btn.setText(course.title);
+            group.addView(btn);
+        }
     }
 
     @Override
     public void onResult(Courses courses) {
         timetableFragment.getActivity().runOnUiThread(() -> {
-            for (Course course : courses.data.get(0)) {
-                Chip btn = createButton(course.title);
-                binding.first.addView(btn);
-            }
-            for (Course course : courses.data.get(1)) {
-                Chip btn = createButton(course.title);
-                binding.second.addView(btn);
-            }
-            for (Course course : courses.data.get(2)) {
-                Chip btn = createButton(course.title);
-                binding.third.addView(btn);
-            }
-            for (Course course : courses.data.get(3)) {
-                Chip btn = createButton(course.title);
-                binding.fourth.addView(btn);
-            }
+            fillCourse(courses.data.get(0), binding.first);
+            fillCourse(courses.data.get(1), binding.second);
+            fillCourse(courses.data.get(2), binding.third);
+            fillCourse(courses.data.get(3), binding.fourth);
         });
     }
 }
