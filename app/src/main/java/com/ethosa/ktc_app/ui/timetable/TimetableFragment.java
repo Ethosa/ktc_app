@@ -21,7 +21,6 @@ public class TimetableFragment extends Fragment {
     }
 
     private void initUI() {
-        binding.textTimetable.setText("This is timetable");
     }
 
     @Override

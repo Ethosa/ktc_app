@@ -6,15 +6,98 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_timetable"
+        android:id="@+id/first_course"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_timetable"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/first_course"
+        android:textColor="@color/text_color"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/first"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="32dp"
+        app:chipSpacingHorizontal="4dp"
+        app:chipSpacingVertical="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_course" />
+
+    <TextView
+        android:id="@+id/second_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/second_course"
+        android:textColor="@color/text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/first" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="32dp"
+        app:chipSpacingHorizontal="4dp"
+        app:chipSpacingVertical="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/second_course" />
+
+    <TextView
+        android:id="@+id/third_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/third_course"
+        android:textColor="@color/text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/second" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/third"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="32dp"
+        app:chipSpacingHorizontal="4dp"
+        app:chipSpacingVertical="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/third_course" />
+
+    <TextView
+        android:id="@+id/fourth_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/fourth_course"
+        android:textColor="@color/text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/third" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/fourth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="32dp"
+        app:chipSpacingHorizontal="4dp"
+        app:chipSpacingVertical="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fourth_course" />
 </androidx.constraintlayout.widget.ConstraintLayout>

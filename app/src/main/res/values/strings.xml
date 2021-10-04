@@ -11,19 +11,8 @@
     <string name="new_body">New body</string>
     <string name="news_date">news date</string>
 
-    <string-array name="cat_names">
-        <item>Рыжик</item>
-        <item>Барсик</item>
-        <item>Мурзик</item>
-        <item>Мурка</item>
-        <item>Васька</item>
-        <item>Томасина</item>
-        <item>Кристина</item>
-        <item>Пушок</item>
-        <item>Дымка</item>
-        <item>Кузя</item>
-        <item>Китти</item>
-        <item>Масяня</item>
-        <item>Симба</item>
-    </string-array>
+    <string name="first_course">1-й Курс:</string>
+    <string name="second_course">2-й Курс:</string>
+    <string name="third_course">3-й Курс:</string>
+    <string name="fourth_course">4-й Курс:</string>
 </resources>
