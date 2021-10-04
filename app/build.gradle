@@ -40,8 +40,9 @@ dependencies {
 
     // Tools
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     // Requests
     implementation 'org.jsoup:jsoup:1.14.2'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
 }

@@ -3,12 +3,15 @@ package com.ethosa.ktc_app.modules;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ethosa.ktc_app.databinding.WallPostBinding;
 import com.ethosa.ktc_app.objects.NewItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,9 +24,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     public NewsAdapter(Context context, int layout, List<NewItem> data) {
         this.data = data;
-        this.layout = layout;;
+        this.layout = layout;
 
         inflater = LayoutInflater.from(context);
+        Picasso.with(inflater.getContext().getApplicationContext())
+                .setLoggingEnabled(true);
     }
 
     @NonNull
@@ -39,6 +44,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.binding.newsTitle.setText(item.title);
         holder.binding.newsBody.setText(item.body);
         holder.binding.newsDate.setText(item.date);
+
+        Picasso.with(inflater.getContext().getApplicationContext())
+                .load(item.image)
+                .into(holder.binding.image);
     }
 
     @Override

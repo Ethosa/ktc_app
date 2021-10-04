@@ -6,8 +6,10 @@ public class NewItem {
     public String image;
     public String date;
     public int id;
+    public boolean image_loaded;
 
     public NewItem() {
+        this.image_loaded = false;
     }
 
     public NewItem(int id, String title, String body, String date, String image) {
@@ -16,5 +18,6 @@ public class NewItem {
         this.body = body;
         this.image = image;
         this.date = date;
+        this.image_loaded = false;
     }
 }
