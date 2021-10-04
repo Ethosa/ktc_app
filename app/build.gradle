@@ -37,6 +37,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.4.0-alpha09'
     implementation 'androidx.navigation:navigation-ui:2.4.0-alpha09'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Tools
     implementation 'com.google.code.gson:gson:2.8.6'

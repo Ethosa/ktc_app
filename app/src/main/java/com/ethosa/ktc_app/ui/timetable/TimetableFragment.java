@@ -23,7 +23,6 @@ public class TimetableFragment extends Fragment {
         college = new College(getContext());
         initUI();
 
-        initUI();
         return root;
     }
 
