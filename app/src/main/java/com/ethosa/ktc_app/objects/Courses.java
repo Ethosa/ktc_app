@@ -13,10 +13,12 @@ public class Courses {
     public static Courses parse(Document doc) {
         Courses result = new Courses();
         result.data = new ArrayList<>();
-        Elements courses_blocks = doc.getElementsByClass("spec-year-block");
+        Elements courses_blocks = doc.
+                getElementsByClass("spec-year-block-container").get(9).
+                getElementsByClass("spec-year-block");
 
         for (Element block : courses_blocks) {
-            Elements courses = doc.getElementsByClass("group-block");
+            Elements courses = block.getElementsByClass("group-block gray-gradient");
             result.data.add(new ArrayList<>());
             for (Element elem : courses) {
                 Course course = Course.parse(elem);
