@@ -6,11 +6,17 @@ import android.content.Context;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.ethosa.ktc_app.callbacks.CoursesCallback;
 import com.ethosa.ktc_app.callbacks.HTMLUpdateCallback;
 import com.ethosa.ktc_app.callbacks.NewsCallback;
+import com.ethosa.ktc_app.objects.Courses;
 import com.ethosa.ktc_app.objects.NewItems;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
@@ -26,12 +32,14 @@ public class College {
     private static final String PRO_URL = "https://pro.kansk-tc.ru/";
     private final WebView webView;
     private final OkHttpClient client;
+    private final Connection session;
     private final Gson gson;
 
     @SuppressLint("SetJavaScriptEnabled")
     public College(Context context) {
         webView = new WebView(context);
         client = new OkHttpClient();
+        session = Jsoup.newSession();
         GsonBuilder builder = new GsonBuilder();
         builder.serializeNulls();
         gson = builder.create();
@@ -57,6 +65,20 @@ public class College {
                 view.evaluateJavascript(js, val -> updateHTML());
             }
         });
+    }
+
+    public void loadCourses(CoursesCallback callback) {
+        final String url = PRO_URL + "blocks/manage_groups/website/list.php?id=1";
+
+        new Thread(() -> {
+            try {
+                Document doc = session.newRequest().url(url).get();
+                Courses courses = Courses.parse(doc);
+                callback.onResult(courses);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     public void getNews(NewsCallback callback) {
