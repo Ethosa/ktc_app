@@ -1,6 +1,10 @@
 package com.ethosa.ktc_app.callbacks;
 
+import android.annotation.SuppressLint;
+import android.view.View;
+
 import com.ethosa.ktc_app.APIInterface;
+import com.ethosa.ktc_app.R;
 import com.ethosa.ktc_app.databinding.FragmentTimetableBinding;
 import com.ethosa.ktc_app.objects.Course;
 import com.ethosa.ktc_app.objects.Courses;
@@ -20,11 +24,18 @@ public class CoursesCallback implements APIInterface<Courses> {
         this.timetableFragment = timetableFragment;
     }
 
+    @SuppressLint("ResourceAsColor")
     private void fillCourse(List<Course> data, ChipGroup group) {
         for (Course course : data) {
             Chip btn = new Chip(timetableFragment.getContext());
             btn.setPadding(0, 0, 0, 0);
             btn.setText(course.title);
+            btn.setTextColor(timetableFragment.getResources().getColor(R.color.text_color));
+            btn.setChipBackgroundColorResource(R.color.foreground_color);
+            btn.setOnClickListener(view -> {
+                timetableFragment.college.loadTimetable(course, timetableFragment.callback);
+                binding.coursesScroll.setVisibility(View.GONE);
+            });
             group.addView(btn);
         }
     }

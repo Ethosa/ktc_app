@@ -13,7 +13,7 @@ import com.ethosa.ktc_app.R;
 import com.ethosa.ktc_app.callbacks.NewsCallback;
 import com.ethosa.ktc_app.databinding.FragmentHomeBinding;
 import com.ethosa.ktc_app.modules.College;
-import com.ethosa.ktc_app.modules.NewsAdapter;
+import com.ethosa.ktc_app.ui.NewsAdapter;
 import com.ethosa.ktc_app.objects.NewItem;
 
 import java.util.ArrayList;

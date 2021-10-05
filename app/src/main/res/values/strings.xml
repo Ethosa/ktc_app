@@ -15,4 +15,11 @@
     <string name="second_course">2-й Курс:</string>
     <string name="third_course">3-й Курс:</string>
     <string name="fourth_course">4-й Курс:</string>
+    <string name="dayheader">DayHeader</string>
+    <string name="_1">1</string>
+    <string name="lesson_from">00:00</string>
+    <string name="lesson_to">12:00</string>
+    <string name="lesson_title">Lesson title</string>
+    <string name="lesson_teacher">Lesson teacher</string>
+    <string name="lesson_classroom">lesson classroom</string>
 </resources>

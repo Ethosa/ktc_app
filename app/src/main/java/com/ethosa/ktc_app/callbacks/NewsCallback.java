@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ethosa.ktc_app.APIInterface;
 import com.ethosa.ktc_app.R;
-import com.ethosa.ktc_app.modules.NewsAdapter;
+import com.ethosa.ktc_app.ui.NewsAdapter;
 import com.ethosa.ktc_app.objects.NewItem;
 import com.ethosa.ktc_app.ui.home.HomeFragment;
 

@@ -3,14 +3,20 @@ package com.ethosa.ktc_app.modules;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.annotation.RequiresApi;
 
 import com.ethosa.ktc_app.callbacks.CoursesCallback;
 import com.ethosa.ktc_app.callbacks.HTMLUpdateCallback;
 import com.ethosa.ktc_app.callbacks.NewsCallback;
+import com.ethosa.ktc_app.callbacks.TimetableCallback;
+import com.ethosa.ktc_app.objects.Course;
 import com.ethosa.ktc_app.objects.Courses;
 import com.ethosa.ktc_app.objects.NewItems;
+import com.ethosa.ktc_app.objects.Timetable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,6 +25,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -49,10 +58,6 @@ public class College {
         webView.addJavascriptInterface(new JavaScriptInterface(new HTMLUpdateCallback(this)), "Android");
     }
 
-    public void updateHTML() {
-        webView.loadUrl("javascript:window.Android.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
-    }
-
     public void auth(String login, String password) {
         final String js = "javascript:" +
                 "document.getElementById('username').value='" + login + "';" +
@@ -65,20 +70,6 @@ public class College {
                 view.evaluateJavascript(js, val -> updateHTML());
             }
         });
-    }
-
-    public void loadCourses(CoursesCallback callback) {
-        final String url = PRO_URL + "blocks/manage_groups/website/list.php?id=1";
-
-        new Thread(() -> {
-            try {
-                Document doc = session.newRequest().url(url).get();
-                Courses courses = Courses.parse(doc);
-                callback.onResult(courses);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
     }
 
     public void getNews(NewsCallback callback) {
@@ -100,5 +91,55 @@ public class College {
                 callback.onResult(data.anonce);
             }
         });
+    }
+
+    public void loadCourses(CoursesCallback callback) {
+        final String url = PRO_URL + "blocks/manage_groups/website/list.php?id=1";
+
+        new Thread(() -> {
+            try {
+                Document doc = session.newRequest().url(url).get();
+                Courses courses = Courses.parse(doc);
+                callback.onResult(courses);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    public int getCurrentWeek() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate date = LocalDate.now();
+            WeekFields weekFields = WeekFields.of(Locale.getDefault());
+            int week = date.get(weekFields.weekOfWeekBasedYear());
+            if (week > 52) {
+                week = 1;
+            } else if (week >= 35 && 52 >= week) {
+                week -= 34;
+            } else {
+                week += 18;
+            }
+            return week;
+        }
+        return 1;
+    }
+
+    public void loadTimetable(Course course, TimetableCallback callback) {
+        final int currentWeek = getCurrentWeek();
+        final String url = PRO_URL +
+                "blocks/manage_groups/website/view.php?gr=" + course.id + "&dep=1";
+        new Thread(() -> {
+            try {
+                Document doc = session.newRequest().url(url).get();
+                Timetable timetable = Timetable.parse(doc);
+                callback.onResult(timetable);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    public void updateHTML() {
+        webView.loadUrl("javascript:window.Android.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
     }
 }

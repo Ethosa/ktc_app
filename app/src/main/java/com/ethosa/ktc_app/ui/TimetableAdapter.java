@@ -1,34 +1,31 @@
-package com.ethosa.ktc_app.modules;
+package com.ethosa.ktc_app.ui;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.ethosa.ktc_app.databinding.WallPostBinding;
-import com.ethosa.ktc_app.objects.NewItem;
-import com.squareup.picasso.Picasso;
+import com.ethosa.ktc_app.databinding.LessonBinding;
+import com.ethosa.ktc_app.objects.Lesson;
 
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
-    public List<NewItem> data;
+public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.ViewHolder> {
+    public List<Lesson> data;
     private final int layout;
     private ItemClickListener listener;
 
     private final LayoutInflater inflater;
 
-    public NewsAdapter(Context context, int layout, List<NewItem> data) {
+    public TimetableAdapter(Context context, int layout, List<Lesson> data) {
         this.data = data;
         this.layout = layout;
 
         inflater = LayoutInflater.from(context);
-        Picasso.with(inflater.getContext().getApplicationContext())
-                .setLoggingEnabled(true);
     }
 
     @NonNull
@@ -40,14 +37,21 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        NewItem item = data.get(position);
-        holder.binding.newsTitle.setText(item.title);
-        holder.binding.newsBody.setText(item.body);
-        holder.binding.newsDate.setText(item.date);
+        Lesson item = data.get(position);
 
-        Picasso.with(inflater.getContext().getApplicationContext())
-                .load(item.image)
-                .into(holder.binding.image);
+        holder.binding.dayHeaderBlock.setVisibility(View.GONE);
+        if (position == 0 || (position > 0 && item.weekDay > getItem(position-1).weekDay)) {
+            holder.binding.dayHeaderBlock.setVisibility(View.VISIBLE);
+            holder.binding.dayHeader.setText(item.weekDayHeader);
+        }
+
+        holder.binding.lessonNumber.setText(item.lessonNumber);
+        holder.binding.lessonFrom.setText(item.from);
+        holder.binding.lessonTo.setText(item.to);
+        holder.binding.lessonTitle.setText(item.title);
+        holder.binding.lessonClassroom.setText(item.classroom);
+        holder.binding.lessonTeacher.setText(item.teacher);
+        System.out.println(holder.binding.dayHeader.getText().toString());
     }
 
     @Override
@@ -57,11 +61,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        WallPostBinding binding;
+        LessonBinding binding;
+        TextView dayHeader;
 
         ViewHolder(View itemView) {
             super(itemView);
-            this.binding = WallPostBinding.inflate(inflater, (ViewGroup) itemView, true);
+            this.binding = LessonBinding.bind(itemView);
             itemView.setOnClickListener(this);
         }
 
@@ -71,7 +76,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         }
     }
 
-    public NewItem getItem(int id) {
+    public Lesson getItem(int id) {
         return data.get(id);
     }
 
