@@ -27,9 +27,7 @@ public class TimetableFragment extends Fragment {
     private FragmentTimetableBinding binding;
     private SharedPreferences preferences;
     private College college;
-    private TimetableAdapter adapter;
     private TimetableCallback callback;
-    private String savedGroup = "";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +55,7 @@ public class TimetableFragment extends Fragment {
     }
 
     private void initPreferences() {
+        String savedGroup = "";
         if (!((savedGroup = preferences.getString("groupId", "")).equals(""))) {
             Course course = Course.from(savedGroup);
             college.loadTimetable(course, callback);
@@ -68,7 +67,7 @@ public class TimetableFragment extends Fragment {
 
     private void initUI() {
         List<Lesson> items = new ArrayList<>();
-        adapter = new TimetableAdapter(getContext(), R.layout.lesson, items);
+        TimetableAdapter adapter = new TimetableAdapter(getContext(), R.layout.lesson, items);
 
         binding.timetable.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         binding.timetable.setLayoutManager(new LinearLayoutManager(getContext()));

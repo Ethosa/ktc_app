@@ -22,7 +22,6 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private NewsAdapter adapter;
     private College college;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -37,7 +36,7 @@ public class HomeFragment extends Fragment {
 
     private void initUI() {
         List<NewItem> items = new ArrayList<>();
-        adapter = new NewsAdapter(getContext(), R.layout.wall_post, items);
+        NewsAdapter adapter = new NewsAdapter(getContext(), R.layout.wall_post, items);
 
         binding.news.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         binding.news.setLayoutManager(new LinearLayoutManager(getContext()));

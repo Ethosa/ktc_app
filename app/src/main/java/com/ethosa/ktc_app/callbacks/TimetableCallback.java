@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TimetableCallback implements APIInterface<Timetable> {
-    private TimetableFragment timetableFragment;
-    private RecyclerView recyclerView;
+    private final TimetableFragment timetableFragment;
+    private final RecyclerView recyclerView;
 
     public TimetableCallback(TimetableFragment timetableFragment, RecyclerView recyclerView) {
         this.timetableFragment = timetableFragment;

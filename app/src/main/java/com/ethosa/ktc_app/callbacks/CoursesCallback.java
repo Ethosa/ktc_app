@@ -16,8 +16,8 @@ import java.util.List;
 
 
 public class CoursesCallback implements APIInterface<Courses> {
-    private FragmentTimetableBinding binding;
-    private TimetableFragment timetableFragment;
+    private final FragmentTimetableBinding binding;
+    private final TimetableFragment timetableFragment;
 
     public CoursesCallback(TimetableFragment timetableFragment, FragmentTimetableBinding binding) {
         this.binding = binding;

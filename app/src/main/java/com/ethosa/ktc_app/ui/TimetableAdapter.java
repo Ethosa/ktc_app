@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ethosa.ktc_app.databinding.LessonBinding;
 import com.ethosa.ktc_app.objects.Lesson;
@@ -60,9 +59,8 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.View
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         LessonBinding binding;
-        TextView dayHeader;
 
         ViewHolder(View itemView) {
             super(itemView);
