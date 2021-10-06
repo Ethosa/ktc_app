@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:padding="2dp">
+    android:layout_marginBottom="4dp"
+    android:background="@color/foreground_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/day_header_block"
@@ -51,8 +51,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lesson_info"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/day_header_block">
 
@@ -96,10 +97,14 @@
             android:id="@+id/lesson_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:maxEms="15"
             android:text="@string/lesson_title"
             android:textColor="@color/text_color"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.399"
             app:layout_constraintStart_toEndOf="@+id/lesson_from"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,12 +112,13 @@
             android:id="@+id/lesson_teacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:text="@string/lesson_teacher"
             android:textColor="@color/text_color"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/lesson_to" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/lesson_classroom"
@@ -122,6 +128,7 @@
             android:layout_marginEnd="2dp"
             android:text="@string/lesson_classroom"
             android:textColor="@color/disabled_text_color"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextContrastCheck" />
