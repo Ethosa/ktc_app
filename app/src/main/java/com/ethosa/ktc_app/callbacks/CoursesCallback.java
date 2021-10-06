@@ -33,8 +33,9 @@ public class CoursesCallback implements APIInterface<Courses> {
             btn.setTextColor(timetableFragment.getResources().getColor(R.color.text_color));
             btn.setChipBackgroundColorResource(R.color.foreground_color);
             btn.setOnClickListener(view -> {
-                timetableFragment.college.loadTimetable(course, timetableFragment.callback);
+                timetableFragment.getCollege().loadTimetable(course, timetableFragment.getCallback());
                 binding.coursesScroll.setVisibility(View.GONE);
+                timetableFragment.getPreferences().edit().putString("groupId", course.id).apply();
             });
             group.addView(btn);
         }

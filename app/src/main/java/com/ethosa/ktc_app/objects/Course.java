@@ -6,6 +6,13 @@ public class Course {
     public String id;
     public String title;
 
+    public static Course from(String id) {
+        Course result = new Course();
+        result.id = id;
+        result.title = "";
+        return result;
+    }
+
     public static Course parse(Element elem) {
         Course course = new Course();
         course.id = elem.attr("group_id");
