@@ -35,6 +35,8 @@ public class CoursesCallback implements APIInterface<Courses> {
             btn.setOnClickListener(view -> {
                 timetableFragment.getCollege().loadTimetable(course, timetableFragment.getCallback());
                 binding.coursesScroll.setVisibility(View.GONE);
+                binding.titlebar.setVisibility(View.VISIBLE);
+                binding.timetable.setVisibility(View.VISIBLE);
                 timetableFragment.getPreferences().edit().putString("groupId", course.id).apply();
             });
             group.addView(btn);

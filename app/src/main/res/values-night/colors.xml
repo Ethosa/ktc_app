@@ -4,8 +4,8 @@
     <color name="text_color">#f3efdf</color>
     <color name="disabled_text_color">#BFBCAE</color>
 
-    <color name="background_color">#42413C</color>
-    <color name="foreground_color">#53524D</color>
+    <color name="background_color">#353430</color>
+    <color name="foreground_color">#454440</color>
 
     <color name="primary">#7296EA</color>
     <color name="primary_dark">#6990D1</color>

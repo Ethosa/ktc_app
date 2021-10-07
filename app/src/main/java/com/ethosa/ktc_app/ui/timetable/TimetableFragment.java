@@ -59,9 +59,10 @@ public class TimetableFragment extends Fragment {
         if (!((savedGroup = preferences.getString("groupId", "")).equals(""))) {
             Course course = Course.from(savedGroup);
             college.loadTimetable(course, callback);
+            binding.titlebar.setVisibility(View.VISIBLE);
             binding.coursesScroll.setVisibility(View.GONE);
         } else {
-            college.loadCourses(new CoursesCallback(this, binding));
+            loadCourses();
         }
     }
 
@@ -72,6 +73,18 @@ public class TimetableFragment extends Fragment {
         binding.timetable.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         binding.timetable.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.timetable.setAdapter(adapter);
+
+        binding.back.setOnClickListener(view -> {
+            preferences.edit().putString("groupId", "").apply();
+            binding.titlebar.setVisibility(View.GONE);
+            binding.coursesScroll.setVisibility(View.VISIBLE);
+            binding.timetable.setVisibility(View.GONE);
+            loadCourses();
+        });
+    }
+
+    private void loadCourses() {
+        college.loadCourses(new CoursesCallback(this, binding));
     }
 
     @Override

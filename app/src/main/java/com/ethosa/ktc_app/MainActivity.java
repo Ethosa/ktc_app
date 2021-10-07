@@ -3,6 +3,7 @@ package com.ethosa.ktc_app;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.navigation.NavController;
@@ -26,15 +27,19 @@ public class MainActivity extends AppCompatActivity {
         initUI();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        final int id = binding.navView.getSelectedItemId();
+        System.out.println(id);
+    }
+
     private void initUI() {
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_timetable)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-
 }
