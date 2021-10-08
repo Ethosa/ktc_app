@@ -4,10 +4,10 @@ import android.webkit.JavascriptInterface;
 
 import com.ethosa.ktc_app.callbacks.HTMLUpdateCallback;
 
-public class JavaScriptInterface {
+public class WebViewInterface {
     private final HTMLUpdateCallback apiInterface;
 
-    public JavaScriptInterface(HTMLUpdateCallback apiInterface) {
+    public WebViewInterface(HTMLUpdateCallback apiInterface) {
         this.apiInterface = apiInterface;
     }
 

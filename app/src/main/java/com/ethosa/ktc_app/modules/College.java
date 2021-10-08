@@ -3,11 +3,8 @@ package com.ethosa.ktc_app.modules;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import androidx.annotation.RequiresApi;
 
 import com.ethosa.ktc_app.callbacks.CoursesCallback;
 import com.ethosa.ktc_app.callbacks.HTMLUpdateCallback;
@@ -55,7 +52,7 @@ public class College {
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setUserAgentString("Mozilla");
-        webView.addJavascriptInterface(new JavaScriptInterface(new HTMLUpdateCallback(this)), "Android");
+        webView.addJavascriptInterface(new WebViewInterface(new HTMLUpdateCallback(this)), "Android");
     }
 
     public void auth(String login, String password) {

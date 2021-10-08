@@ -22,18 +22,21 @@ public class Lesson {
         result.to = time.get(2).text();
         result.weekDay = 0;
         result.weekDayHeader = "";
+        result.title = "";
+        result.teacher = "";
+        result.classroom = "";
 
         Elements lessons_blocks = lessonElement.getElementsByClass("discBlock");
         Element lesson_info = lessons_blocks.get(lessons_blocks.size()-1);
+        if (lesson_info.attr("class").contains("cancelled")) {
+            return result;
+        }
+
         Elements spans = lesson_info.getElementsByTag("span");
         if (spans.size() > 0) {
             result.title = spans.get(0).text();
             result.teacher = spans.get(1).text();
             result.classroom = spans.get(2).text();
-        } else {
-            result.title = "";
-            result.teacher = "";
-            result.classroom = "";
         }
 
         return result;
