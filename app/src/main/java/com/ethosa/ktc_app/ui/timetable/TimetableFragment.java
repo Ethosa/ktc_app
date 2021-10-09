@@ -79,6 +79,10 @@ public class TimetableFragment extends Fragment {
             binding.titlebar.setVisibility(View.GONE);
             binding.coursesScroll.setVisibility(View.VISIBLE);
             binding.timetable.setVisibility(View.GONE);
+            binding.first.removeAllViews();
+            binding.second.removeAllViews();
+            binding.third.removeAllViews();
+            binding.fourth.removeAllViews();
             loadCourses();
         });
     }
